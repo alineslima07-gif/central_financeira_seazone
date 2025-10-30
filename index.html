@@ -1,51 +1,808 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Central Financeira - Seazone</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9fafb;
-      margin: 0;
-      padding: 40px;
-      color: #333;
-      text-align: center;
-    }
-    h1 {
-      color: #0057b7;
-    }
-    h2 {
-      margin-top: 40px;
-      color: #333;
-    }
-    iframe {
-      width: 90%;
-      height: 800px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      margin: 20px auto;
-      display: block;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Financeira - Seazone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #0066cc;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #0066cc;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #28a745;
+            border-radius: 2px;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #0066cc;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card .btn {
+            width: 100%;
+        }
+
+        /* ===== INSTRUCTIONS SECTION ===== */
+        .instructions {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .instruction-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .instruction-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .instruction-item h4 {
+            font-size: 1.1rem;
+            color: #0066cc;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .instruction-item ol, .instruction-item ul {
+            margin-left: 2rem;
+            color: #666;
+        }
+
+        .instruction-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: #28a745;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            color: #0066cc;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-text p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0066cc;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f0f0f0;
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                display: none;
+                gap: 1rem;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 1.5rem 1rem;
+            }
+
+            section {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 1.5rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .success {
+            background-color: #d4edda;
+            padding: 1.5rem;
+            border-left: 4px solid #28a745;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+    </style>
 </head>
 <body>
-  <h1>Central Financeira - Seazone</h1>
-  <p>Preencha os formulários abaixo conforme a necessidade.</p>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">💰</span>
+                <span>Central Financeira</span>
+            </div>
+            <nav id="nav-menu">
+                <a href="#formularios">Formulários</a>
+                <a href="#dashboards">Dashboards</a>
+                <a href="#instrucoes">Instruções</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+        </div>
+    </header>
 
-  <h2>Formulário 1 – Contas a Receber (AR)</h2>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScAK7C8O4ieTzEiGfNNMhBNB7qnjNgeeJwYPuTwq0rTf4XDSg/viewform?embedded=true">Carregando…</iframe>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Bem-vindo à Central Financeira Seazone</h1>
+            <p>Seu portal centralizado para gestão de contas a pagar e receber</p>
+            <div class="hero-buttons">
+                <a href="#formularios" class="btn btn-primary">Ir para Formulários</a>
+                <a href="#dashboards" class="btn btn-secondary">Ver Dashboards</a>
+            </div>
+        </div>
+    </section>
 
-  <h2>Formulário 2 – Contas a Pagar (AP)</h2>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeFfhhIQ42HUyprRmCZr4SlpE_ja8WLkMW8dkbQPsQzm77sNA/viewform?embedded=true">Carregando…</iframe>
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SEÇÃO 1: AÇÕES RÁPIDAS -->
+        <section id="acoes">
+            <h2>Ações Rápidas</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📤</div>
+                    <h3>Lançar Conta a Pagar</h3>
+                    <p>Registre uma nova despesa ou fatura para pagamento</p>
+                    <a href="https://forms.gle/6cfNJCti8P4ah2L77" target="_blank" class="btn btn-primary">Acessar Formulário</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📥</div>
+                    <h3>Lançar Conta a Receber</h3>
+                    <p>Registre uma nova receita ou contrato de cliente</p>
+                    <a href="https://forms.gle/2ijd1FVcKicczFxWA" target="_blank" class="btn btn-primary">Acessar Formulário</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Ver Dashboards</h3>
+                    <p>Visualize relatórios e análises em tempo real</p>
+                    <a href="https://lookerstudio.google.com/reporting/d55d5318-c18e-43e9-89e1-4b0a980b1dad" target="_blank" class="btn btn-primary">Acessar Dashboards</a>
+                </div>
+            </div>
+        </section>
 
-  <footer>Desenvolvido por Aline Lima | © 2025</footer>
+        <!-- SEÇÃO 2: FORMULÁRIOS -->
+        <section id="formularios">
+            <h2>Formulários de Entrada</h2>
+            <div class="success">
+                <strong>✓ Dica:</strong> Preencha todos os campos obrigatórios. Os dados serão processados automaticamente e aparecerão nos dashboards em tempo real.
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">💳</div>
+                    <h3>Contas a Pagar (AP)</h3>
+                    <p>Registre despesas, faturas, boletos e outras obrigações de pagamento</p>
+                    <p style="font-size: 0.85rem; color: #999;">Campos: Empresa, Fornecedor, Datas, Categoria, Valor, NF, Comprovante</p>
+                    <a href="https://forms.gle/6cfNJCti8P4ah2L77" target="_blank" class="btn btn-primary">Abrir Formulário</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💵</div>
+                    <h3>Contas a Receber (AR)</h3>
+                    <p>Registre receitas, contratos de clientes e outras obrigações de recebimento</p>
+                    <p style="font-size: 0.85rem; color: #999;">Campos: Empresa, Cliente, Datas, Categoria, Valor, NFSe, Comprovante</p>
+                    <a href="https://forms.gle/2ijd1FVcKicczFxWA" target="_blank" class="btn btn-primary">Abrir Formulário</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: DASHBOARDS -->
+        <section id="dashboards">
+            <h2>Dashboards e Relatórios</h2>
+            <div class="highlight">
+                <strong>📊 Informação:</strong> Os dashboards são atualizados em tempo real. Use os filtros para análises específicas por Status, Empresa, Data, etc.
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h3>Dashboard Executivo</h3>
+                    <p>Visão geral com KPIs principais, gráficos de distribuição e indicadores de saúde financeira</p>
+                    <a href="https://lookerstudio.google.com/reporting/d55d5318-c18e-43e9-89e1-4b0a980b1dad" target="_blank" class="btn btn-primary">Abrir Dashboard</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Controle de Contas</h3>
+                    <p>Visualize todas as contas a pagar e receber com status, datas e valores atualizados</p>
+                    <a href="https://lookerstudio.google.com/reporting/d55d5318-c18e-43e9-89e1-4b0a980b1dad" target="_blank" class="btn btn-primary">Abrir Controle</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: INSTRUÇÕES -->
+        <section id="instrucoes">
+            <h2>Como Usar o Sistema</h2>
+            <div class="instructions">
+                <div class="instruction-item">
+                    <h4>📝 Preenchendo os Formulários</h4>
+                    <ol>
+                        <li><strong>Selecione a empresa:</strong> Escolha entre Seazone A, B ou C</li>
+                        <li><strong>Preencha os dados básicos:</strong> Fornecedor/Cliente, datas, descrição</li>
+                        <li><strong>Selecione a categoria:</strong> Escolha a categoria apropriada (Serviços, Marketing, etc.)</li>
+                        <li><strong>Digite o valor:</strong> Use ponto como separador decimal (ex: 1500.50)</li>
+                        <li><strong>Número do documento:</strong> NF (Contas a Pagar) ou NFSe (Contas a Receber)</li>
+                        <li><strong>Anexe o comprovante:</strong> PDF ou imagem da NF/Boleto/Contrato</li>
+                        <li><strong>Clique em Enviar:</strong> Você receberá confirmação de sucesso</li>
+                    </ol>
+                </div>
+
+                <div class="instruction-item">
+                    <h4>📊 Acessando os Dashboards</h4>
+                    <ol>
+                        <li><strong>Clique em "Ver Dashboards":</strong> Você será redirecionado para o Looker Studio</li>
+                        <li><strong>Use os filtros:</strong> Filtre por Status, Empresa, Data, Categoria, etc.</li>
+                        <li><strong>Analise os gráficos:</strong> Visualize distribuição, tendências e comparações</li>
+                        <li><strong>Exporte dados:</strong> Se necessário, exporte os dados em PDF ou CSV</li>
+                    </ol>
+                </div>
+
+                <div class="instruction-item">
+                    <h4>✅ Boas Práticas</h4>
+                    <ul>
+                        <li>Preencha os formulários assim que a despesa/receita for confirmada</li>
+                        <li>Use descrições claras e detalhadas</li>
+                        <li>Sempre anexe o comprovante (NF, boleto, contrato, etc.)</li>
+                        <li>Verifique os dados nos dashboards após o lançamento</li>
+                        <li>Comunique erros ou discrepâncias ao time financeiro</li>
+                        <li>Mantenha os dados atualizados para relatórios precisos</li>
+                    </ul>
+                </div>
+
+                <div class="instruction-item">
+                    <h4>🔍 Entendendo os Status</h4>
+                    <ul>
+                        <li><strong>Contas a Pagar:</strong> Pago, Vencido, Pendente, Aprovado, A Pagar</li>
+                        <li><strong>Contas a Receber:</strong> Recebido, Vencido, Em Aberto</li>
+                        <li><strong>Conciliação:</strong> Conciliado, Não Identificado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: FUNCIONALIDADES -->
+        <section id="funcionalidades">
+            <h2>Funcionalidades do Sistema</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Entrada Automática de Dados</h4>
+                        <p>Os dados dos formulários são salvos automaticamente nos dashboards</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Status Dinâmicos</h4>
+                        <p>O status é atualizado automaticamente baseado em datas e eventos</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Filtros Avançados</h4>
+                        <p>Filtre dados por Status, Empresa, Data, Categoria e muito mais</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Gráficos em Tempo Real</h4>
+                        <p>Visualize distribuição, tendências e comparações automaticamente</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Cálculos Automáticos</h4>
+                        <p>Dias de atraso, totalizações e indicadores são calculados automaticamente</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Validações de Dados</h4>
+                        <p>Os formulários validam dados para garantir qualidade e consistência</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: FAQ -->
+        <section id="faq">
+            <h2>Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Como faço para lançar uma nova conta a pagar?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Clique no botão "Lançar Conta a Pagar" ou acesse o formulário de AP. Preencha todos os campos obrigatórios (Empresa, Fornecedor, Datas, Categoria, Valor, NF e Comprovante) e clique em Enviar. Você receberá uma confirmação de sucesso.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quanto tempo leva para os dados aparecerem nos dashboards?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Os dados aparecem nos dashboards em tempo real, geralmente em menos de 1 minuto após o envio do formulário. Se não aparecer, tente atualizar a página (F5) ou aguarde alguns segundos.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Posso editar um lançamento após enviá-lo?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Não é possível editar diretamente pelo formulário. Se precisar corrigir um lançamento, entre em contato com o time financeiro para fazer a alteração nos dashboards.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Qual é o formato correto para o número da NF?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Para Contas a Pagar: NF seguido de 4 dígitos (ex: NF0001, NF1234). Para Contas a Receber: NFSe seguido de 4 dígitos (ex: NFSe0001, NFSe5678).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>O que significa cada status nas contas?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <strong>Contas a Pagar:</strong> Pago (já pagou), Vencido (passou da data de vencimento), Pendente (aguardando aprovação), Aprovado (aprovado para pagamento), A Pagar (não vencido ainda). <strong>Contas a Receber:</strong> Recebido (dinheiro recebido), Vencido (passou da data de vencimento), Em Aberto (não vencido ainda).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Como faço para exportar dados do dashboard?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No Looker Studio, clique no ícone de menu (três pontos) no canto superior direito do gráfico ou tabela e selecione "Fazer download" para exportar em PDF ou CSV.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Preciso de ajuda ou tenho uma dúvida não listada aqui</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Entre em contato com o time financeiro ou o administrador do sistema. Você pode enviar um e-mail com sua dúvida ou agendar uma reunião de suporte. Consulte a seção de contatos no rodapé da página.
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 7: PRÓXIMOS PASSOS -->
+        <section id="proximos-passos">
+            <h2>Próximos Passos</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">1️⃣</div>
+                    <h3>Explore o Sistema</h3>
+                    <p>Navegue pelos formulários e dashboards para se familiarizar</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">2️⃣</div>
+                    <h3>Lance Seus Primeiros Dados</h3>
+                    <p>Comece a registrar contas a pagar e receber</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">3️⃣</div>
+                    <h3>Analise os Dashboards</h3>
+                    <p>Visualize os dados em gráficos e relatórios</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">4️⃣</div>
+                    <h3>Compartilhe com a Equipe</h3>
+                    <p>Convide outros usuários para usar o sistema</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Central Financeira - Seazone</strong></p>
+        <p>Seu portal centralizado para gestão financeira</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            Para dúvidas ou suporte, entre em contato com o time financeiro
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: #999;">
+            © 2024 Seazone. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Menu toggle para mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Fechar outros itens
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle item atual
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
