@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — TikTok Cover 1080×1920</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #010101;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 2rem; gap: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .info-bar { color: #555; font-size: .8rem; }
+
+    /* Half-scale preview */
+    .canvas-wrapper { transform: scale(0.5); transform-origin: top center; width: 1080px; margin-bottom: -480px; }
+
+    .canvas {
+      width: 1080px; height: 1920px;
+      background: #010101;
+      position: relative; overflow: hidden;
+    }
+
+    /* ── BG: Multi-layer dark gradient with TikTok accent ── */
+    .bg-layer {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%,   rgba(105,201,208,.22) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 60%,  rgba(255,0,80,.12)    0%, transparent 40%),
+        radial-gradient(ellipse at 20% 100%, rgba(0,102,204,.18)   0%, transparent 45%),
+        linear-gradient(180deg, #080808 0%, #010101 40%, #050505 100%);
+    }
+
+    /* Grid overlay */
+    .grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+
+    /* Glowing ring decoration */
+    .ring { position: absolute; border-radius: 50%; }
+    .ring-c {
+      width: 1200px; height: 1200px;
+      border: 1px solid rgba(105,201,208,.1);
+      top: -400px; left: 50%; transform: translateX(-50%);
+    }
+    .ring-c2 {
+      width: 900px; height: 900px;
+      border: 1px solid rgba(255,0,80,.07);
+      top: -200px; left: 50%; transform: translateX(-50%);
+    }
+
+    /* Scanlines effect (subtle) */
+    .scanlines {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0) 0px,
+        rgba(0,0,0,0) 3px,
+        rgba(0,0,0,.06) 3px,
+        rgba(0,0,0,.06) 4px
+      );
+      pointer-events: none;
+    }
+
+    /* ── TOP SECTION ── */
+    .top-area {
+      position: absolute;
+      top: 100px; left: 0; right: 0;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 1.2rem;
+    }
+
+    /* TikTok-style dual logo */
+    .tiktok-logo-wrap { position: relative; display: inline-block; }
+    .logo-shadow-c {
+      position: absolute; top: 6px; left: 0; width: 96px; height: 96px;
+      background: linear-gradient(135deg, #69c9d0, #0044aa);
+      border-radius: 24px; opacity: .5; filter: blur(8px);
+    }
+    .logo-shadow-r {
+      position: absolute; top: 6px; right: -12px; width: 96px; height: 96px;
+      background: linear-gradient(135deg, #ff0050, #8800aa);
+      border-radius: 24px; opacity: .5; filter: blur(8px);
+    }
+    .logo-main {
+      position: relative; z-index: 2;
+      width: 96px; height: 96px;
+      background: linear-gradient(135deg, #69c9d0, #0066cc 45%, #ff0050);
+      border-radius: 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem; font-weight: 900; color: #fff;
+      box-shadow: 0 12px 36px rgba(0,0,0,.6);
+    }
+    .brand-top {
+      font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: -.04em;
+    }
+    .handle {
+      font-size: .9rem; color: #555; letter-spacing: .08em;
+    }
+
+    /* ── HERO CENTER ── */
+    .hero-center {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -54%);
+      text-align: center; width: 940px;
+    }
+
+    /* Giant Z glitch */
+    .z-base {
+      font-size: 24rem; font-weight: 900; letter-spacing: -.1em;
+      line-height: 1; user-select: none; pointer-events: none;
+      position: absolute; top: -220px; left: 50%; transform: translateX(-50%);
+    }
+    .z-base .z-c { color: transparent; background: linear-gradient(135deg,rgba(105,201,208,.3),rgba(0,102,204,.1)); -webkit-background-clip:text;background-clip:text; }
+    .z-base .z-r {
+      position: absolute; inset: 0;
+      color: rgba(255,0,80,.08); letter-spacing: -.1em;
+      transform: translate(6px, 0);
+    }
+    .z-base .z-l {
+      position: absolute; inset: 0;
+      color: rgba(105,201,208,.08); letter-spacing: -.1em;
+      transform: translate(-6px, 0);
+    }
+
+    .eyebrow {
+      font-size: 1rem; font-weight: 600;
+      background: linear-gradient(90deg, #69c9d0, #ff0050);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      letter-spacing: .2em; text-transform: uppercase;
+      margin-bottom: 1.5rem; position: relative;
+    }
+    .headline {
+      font-size: 7rem; font-weight: 900; color: #fff;
+      line-height: 1; letter-spacing: -.05em;
+      margin-bottom: 1.25rem; position: relative;
+    }
+    .headline .cyan { color: #69c9d0; }
+    .headline .red  { color: #ff0050; }
+
+    .divider-dual {
+      display: flex; justify-content: center; gap: 6px;
+      margin: 0 auto 2rem; position: relative;
+    }
+    .divider-dual span {
+      width: 40px; height: 5px; border-radius: 3px;
+    }
+    .divider-dual .dc { background: #69c9d0; }
+    .divider-dual .dr { background: #ff0050; }
+
+    .body-text {
+      font-size: 1.35rem; color: rgba(255,255,255,.6);
+      line-height: 1.8; max-width: 740px; margin: 0 auto 3rem;
+      position: relative;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: .75rem;
+      padding: 1.25rem 3.5rem; border-radius: 18px;
+      font-size: 1.3rem; font-weight: 700; color: #fff;
+      background: linear-gradient(135deg, #69c9d0, #0066cc 50%, #ff0050);
+      box-shadow: 0 16px 48px rgba(105,201,208,.3), 0 16px 48px rgba(255,0,80,.15);
+      position: relative;
+    }
+
+    /* ── FEATURES ── */
+    .features-area {
+      position: absolute;
+      bottom: 250px; left: 0; right: 0;
+      padding: 0 90px;
+    }
+
+    .feat-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+    .feat-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 22px;
+      padding: 1.6rem 2rem;
+      display: flex; align-items: center; gap: 1.75rem;
+      position: relative; overflow: hidden;
+    }
+    .feat-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px;
+    }
+    .feat-card.c1::before { background: linear-gradient(180deg, #69c9d0, transparent); }
+    .feat-card.c2::before { background: linear-gradient(180deg, #ff0050, transparent); }
+    .feat-card.c3::before { background: linear-gradient(180deg, #0066cc, transparent); }
+    .feat-card.c4::before { background: linear-gradient(180deg, #28a745, transparent); }
+
+    .feat-icon-wrap { font-size: 2.2rem; flex-shrink: 0; }
+    .feat-title { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    .feat-sub   { font-size: .9rem; color: rgba(255,255,255,.45); margin-top: .3rem; }
+
+    /* ── BOTTOM ── */
+    .bottom-area {
+      position: absolute; bottom: 80px; left: 0; right: 0;
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    }
+    .bottom-brand { font-size: 1.4rem; font-weight: 900; color: rgba(255,255,255,.3); letter-spacing: -.02em; }
+    .bottom-url   { font-size: .9rem; color: rgba(255,255,255,.18); }
+
+    /* TikTok dual-color bottom bar */
+    .bottom-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
+      background: linear-gradient(90deg, #69c9d0 0%, #0066cc 35%, #ff0050 70%, #ff0050 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">TikTok Cover — 1080 × 1920 px (exibido em 50%)</div>
+  <div class="canvas-wrapper">
+    <div class="canvas">
+      <div class="bg-layer"></div>
+      <div class="grid"></div>
+      <div class="ring ring-c"></div>
+      <div class="ring ring-c2"></div>
+      <div class="scanlines"></div>
+
+      <!-- TOP -->
+      <div class="top-area">
+        <div class="tiktok-logo-wrap">
+          <div class="logo-shadow-c"></div>
+          <div class="logo-shadow-r"></div>
+          <div class="logo-main">Z</div>
+        </div>
+        <div class="brand-top">ZENIT</div>
+        <div class="handle">@zenit.seazone</div>
+      </div>
+
+      <!-- HERO -->
+      <div class="hero-center">
+        <div class="z-base">
+          <span class="z-c">Z</span>
+          <span class="z-r">Z</span>
+          <span class="z-l">Z</span>
+        </div>
+        <div class="eyebrow">Gestão Financeira · TikTok</div>
+        <div class="headline">
+          No <span class="cyan">topo</span><br>
+          das suas<br>
+          <span class="red">finanças</span>
+        </div>
+        <div class="divider-dual">
+          <span class="dc"></span>
+          <span class="dr"></span>
+        </div>
+        <div class="body-text">Dicas de gestão financeira, dashboards ao vivo e conteúdo que transforma a saúde financeira da sua empresa.</div>
+        <div class="cta-btn">Seguir Agora →</div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="features-area">
+        <div class="feat-grid">
+          <div class="feat-card c1">
+            <div class="feat-icon-wrap">📊</div>
+            <div><div class="feat-title">Conteúdo Financeiro Diário</div><div class="feat-sub">Dicas práticas para sua empresa crescer</div></div>
+          </div>
+          <div class="feat-card c2">
+            <div class="feat-icon-wrap">🎯</div>
+            <div><div class="feat-title">Tutoriais de Dashboard</div><div class="feat-sub">Aprenda a ler e usar métricas financeiras</div></div>
+          </div>
+          <div class="feat-card c3">
+            <div class="feat-icon-wrap">🚀</div>
+            <div><div class="feat-title">Cases de Sucesso</div><div class="feat-sub">Histórias reais de empresas com a Zenit</div></div>
+          </div>
+          <div class="feat-card c4">
+            <div class="feat-icon-wrap">💡</div>
+            <div><div class="feat-title">Lives e Q&amp;A ao Vivo</div><div class="feat-sub">Tire suas dúvidas com especialistas</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM -->
+      <div class="bottom-area">
+        <div class="bottom-brand">ZENIT · Seazone Financial</div>
+        <div class="bottom-url">zenit.seazone.com</div>
+      </div>
+      <div class="bottom-bar"></div>
+    </div>
+  </div>
+</body>
+</html>

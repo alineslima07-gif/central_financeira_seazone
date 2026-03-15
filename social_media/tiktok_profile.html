@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — TikTok Foto de Perfil 800×800</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #010101;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 100vh;
+      font-family: 'Inter', sans-serif; gap: 2rem;
+    }
+    .info-bar { color: #555; font-size: .8rem; }
+
+    .variants { display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+    .variant-label { color: #555; font-size: .72rem; text-align: center; margin-top: .75rem; }
+
+    /* ── VARIAÇÃO 1: TikTok Signature ── */
+    .v1 {
+      width: 400px; height: 400px; border-radius: 50%;
+      background: #010101;
+      position: relative; overflow: hidden;
+      /* TikTok glitch border efeito duplo cyan+vermelho */
+      box-shadow:
+        -4px 0 0 #69c9d0,
+         4px 0 0 #ff0050,
+         0 0 0 6px #222,
+         0 20px 60px rgba(0,0,0,.8);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .v1 .bg-glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(105,201,208,.18), transparent 50%),
+        radial-gradient(circle at 30% 70%, rgba(255,0,80,.12), transparent 50%);
+    }
+    .v1 .z-letter {
+      font-size: 13rem; font-weight: 900; color: transparent;
+      background: linear-gradient(135deg, #69c9d0, #0066cc 40%, #ff0050);
+      -webkit-background-clip: text; background-clip: text;
+      letter-spacing: -.1em; line-height: 1;
+      position: relative; z-index: 1;
+      filter: drop-shadow(0 0 30px rgba(105,201,208,.5));
+    }
+    /* Glitch layers */
+    .v1 .z-glitch-1 {
+      position: absolute;
+      font-size: 13rem; font-weight: 900; color: #69c9d0;
+      letter-spacing: -.1em; line-height: 1;
+      opacity: .25; top: 50%; left: 50%;
+      transform: translate(calc(-50% - 4px), -50%);
+      pointer-events: none; user-select: none;
+    }
+    .v1 .z-glitch-2 {
+      position: absolute;
+      font-size: 13rem; font-weight: 900; color: #ff0050;
+      letter-spacing: -.1em; line-height: 1;
+      opacity: .25; top: 50%; left: 50%;
+      transform: translate(calc(-50% + 4px), -50%);
+      pointer-events: none; user-select: none;
+    }
+
+    /* ── VARIAÇÃO 2: Box com brand completa ── */
+    .v2 {
+      width: 400px; height: 400px; border-radius: 24px;
+      background: #010101;
+      position: relative; overflow: hidden;
+      border: 2px solid #222;
+      box-shadow: 0 20px 60px rgba(0,0,0,.8);
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: .75rem;
+    }
+    .v2 .bg-grad {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #0d0d0d 0%, #010101 60%, #0a0a0a 100%);
+    }
+    .v2 .tiktok-stripe {
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #69c9d0, #010101 30%, #ff0050);
+    }
+    .v2 .tiktok-stripe-b {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #ff0050, #010101 30%, #69c9d0);
+    }
+    .v2 .logo-box {
+      width: 140px; height: 140px;
+      background: linear-gradient(135deg, #69c9d0, #0066cc 50%, #ff0050);
+      border-radius: 34px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5.5rem; font-weight: 900; color: #fff;
+      box-shadow: 0 16px 48px rgba(105,201,208,.4), 0 0 0 2px rgba(255,255,255,.06);
+      position: relative; z-index: 1;
+    }
+    .v2 .brand { font-size: 2.6rem; font-weight: 900; color: #fff; letter-spacing: -.04em; position: relative; z-index: 1; }
+    .v2 .sub { font-size: .8rem; color: #444; letter-spacing: .14em; text-transform: uppercase; position: relative; z-index: 1; }
+
+    /* ── VARIAÇÃO 3: Circular minimalista dark ── */
+    .v3 {
+      width: 400px; height: 400px; border-radius: 50%;
+      background: #010101;
+      position: relative; overflow: hidden;
+      box-shadow:
+        0 0 0 3px #69c9d0,
+        0 0 0 6px #010101,
+        0 0 0 9px #ff0050,
+        0 20px 60px rgba(0,0,0,.8);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .v3 .inner {
+      width: 250px; height: 250px; border-radius: 50%;
+      background: linear-gradient(135deg, #0d1f3c 0%, #001a4d 50%, #0044aa 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 0 60px rgba(0,102,204,.4);
+      position: relative; z-index: 1;
+      gap: .25rem;
+    }
+    .v3 .z { font-size: 7rem; font-weight: 900; color: #fff; letter-spacing: -.08em; line-height: 1; }
+    .v3 .brand-tiny { font-size: .85rem; font-weight: 600; color: rgba(255,255,255,.5); letter-spacing: .14em; text-transform: uppercase; }
+    .v3 .bg-glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 60% 30%, rgba(105,201,208,.12), transparent 50%),
+        radial-gradient(circle at 40% 70%, rgba(255,0,80,.08), transparent 50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">TikTok — Foto de Perfil · 800 × 800 px · 3 variações (exibidas em 50%)</div>
+  <div class="variants">
+
+    <!-- V1: Glitch Z -->
+    <div>
+      <div class="v1">
+        <div class="bg-glow"></div>
+        <div class="z-glitch-1">Z</div>
+        <div class="z-glitch-2">Z</div>
+        <div class="z-letter">Z</div>
+      </div>
+      <div class="variant-label">Variação 1 — Glitch Effect<br>Mais impactante para o TikTok</div>
+    </div>
+
+    <!-- V2: Box logo -->
+    <div>
+      <div class="v2">
+        <div class="bg-grad"></div>
+        <div class="tiktok-stripe"></div>
+        <div class="tiktok-stripe-b"></div>
+        <div class="logo-box">Z</div>
+        <div class="brand">ZENIT</div>
+        <div class="sub">Seazone</div>
+      </div>
+      <div class="variant-label">Variação 2 — Box com marca<br>Consistente com outras redes</div>
+    </div>
+
+    <!-- V3: Circular dark -->
+    <div>
+      <div class="v3">
+        <div class="bg-glow"></div>
+        <div class="inner">
+          <div class="z">Z</div>
+          <div class="brand-tiny">ZENIT</div>
+        </div>
+      </div>
+      <div class="variant-label">Variação 3 — Circular duplo anel<br>Assinatura TikTok/Insta</div>
+    </div>
+
+  </div>
+</body>
+</html>
