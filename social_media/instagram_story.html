@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — Instagram Story 1080×1920</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #111827; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; gap: 1rem; }
+    .info-bar { color: #9aa5b4; font-size: .8rem; }
+
+    /* Rendered at half scale for preview */
+    .canvas-wrapper { transform: scale(0.5); transform-origin: top center; width: 1080px; margin-bottom: -480px; }
+
+    .canvas {
+      width: 1080px; height: 1920px;
+      background: linear-gradient(180deg, #000d1f 0%, #001f4d 30%, #003580 60%, #0066cc 100%);
+      position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    /* Stars / particles */
+    .particles {
+      position: absolute; inset: 0;
+    }
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      border-radius: 50%; background: rgba(255,255,255,.6);
+    }
+
+    .arc-1 {
+      position: absolute;
+      width: 1200px; height: 1200px; border-radius: 50%;
+      border: 1px solid rgba(0,212,255,.1);
+      top: -400px; left: 50%; transform: translateX(-50%);
+    }
+    .arc-2 {
+      position: absolute;
+      width: 900px; height: 900px; border-radius: 50%;
+      border: 1px solid rgba(0,212,255,.07);
+      top: -250px; left: 50%; transform: translateX(-50%);
+    }
+
+    .blob-top {
+      position: absolute;
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,.2), transparent 60%);
+      top: -300px; left: 50%; transform: translateX(-50%);
+    }
+
+    /* Content layout */
+    .top-bar {
+      position: absolute; top: 80px; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+    }
+    .logo-sm {
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, #00d4ff, #0066cc);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; font-weight: 900; color: #fff;
+    }
+    .brand-sm { font-size: 1.6rem; font-weight: 900; color: #fff; letter-spacing: -.03em; }
+
+    .hero-section {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -52%);
+      text-align: center; width: 900px;
+    }
+
+    .big-z {
+      font-size: 22rem; font-weight: 900; color: transparent;
+      background: linear-gradient(135deg, rgba(0,212,255,.3), rgba(0,102,204,.1));
+      -webkit-background-clip: text; background-clip: text;
+      position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+      line-height: 1; pointer-events: none; user-select: none;
+      letter-spacing: -.08em;
+    }
+
+    .eyebrow {
+      font-size: 1rem; font-weight: 600; color: #00d4ff;
+      letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .headline {
+      font-size: 6rem; font-weight: 900; color: #fff;
+      line-height: 1; letter-spacing: -.04em;
+      margin-bottom: 1.5rem; position: relative;
+    }
+    .headline em { color: #00d4ff; font-style: normal; }
+
+    .divider {
+      width: 80px; height: 5px;
+      background: linear-gradient(90deg, #00d4ff, #28a745);
+      border-radius: 3px; margin: 0 auto 2rem; position: relative;
+    }
+
+    .body-text {
+      font-size: 1.3rem; color: rgba(255,255,255,.7);
+      line-height: 1.8; max-width: 700px; margin: 0 auto 3rem;
+      position: relative;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: .75rem;
+      padding: 1.25rem 3rem;
+      background: linear-gradient(135deg, #28a745, #1a6b2f);
+      border-radius: 16px;
+      font-size: 1.25rem; font-weight: 700; color: #fff;
+      box-shadow: 0 12px 40px rgba(40,167,69,.4);
+      position: relative;
+    }
+
+    .features-section {
+      position: absolute;
+      bottom: 200px; left: 0; right: 0;
+      padding: 0 80px;
+    }
+    .feature-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .feature-card {
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .feat-icon { font-size: 2rem; }
+    .feat-text h4 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    .feat-text p { font-size: .9rem; color: rgba(255,255,255,.55); margin-top: .25rem; }
+
+    .bottom-brand {
+      position: absolute; bottom: 60px; left: 0; right: 0;
+      text-align: center;
+    }
+    .bottom-brand .bn { font-size: 1.5rem; font-weight: 900; color: rgba(255,255,255,.4); letter-spacing: -.02em; }
+    .bottom-brand .bu { font-size: .9rem; color: rgba(255,255,255,.25); }
+
+    .bottom-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #00d4ff, #0066cc, #28a745);
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">Instagram / Facebook Story — 1080 × 1920 px (exibido em 50%)</div>
+  <div class="canvas-wrapper">
+    <div class="canvas">
+      <div class="arc-1"></div>
+      <div class="arc-2"></div>
+      <div class="blob-top"></div>
+
+      <!-- Stars -->
+      <div class="particles">
+        <div class="particle" style="top:5%;left:8%"></div>
+        <div class="particle" style="top:8%;left:25%;width:3px;height:3px;opacity:.4"></div>
+        <div class="particle" style="top:12%;left:55%"></div>
+        <div class="particle" style="top:4%;left:72%;width:3px;height:3px;opacity:.6"></div>
+        <div class="particle" style="top:18%;left:88%"></div>
+        <div class="particle" style="top:22%;left:15%;width:4px;height:4px;opacity:.3"></div>
+        <div class="particle" style="top:9%;left:42%"></div>
+        <div class="particle" style="top:30%;left:6%;opacity:.3"></div>
+        <div class="particle" style="top:35%;left:92%;width:3px;height:3px"></div>
+        <div class="particle" style="top:6%;left:60%;opacity:.5"></div>
+      </div>
+
+      <div class="top-bar">
+        <div class="logo-sm">Z</div>
+        <div class="brand-sm">ZENIT</div>
+      </div>
+
+      <div class="hero-section">
+        <div class="big-z">Z</div>
+        <div class="eyebrow">Gestão Financeira Inteligente</div>
+        <div class="headline">No<br><em>topo</em><br>das suas<br>finanças</div>
+        <div class="divider"></div>
+        <div class="body-text">Dashboards em tempo real, controle total de contas e relatórios automáticos para sua empresa crescer.</div>
+        <div class="cta-btn">Saiba Mais →</div>
+      </div>
+
+      <div class="features-section">
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feat-icon">📊</div>
+            <div class="feat-text">
+              <h4>Dashboards em Tempo Real</h4>
+              <p>Visualize KPIs e métricas instantaneamente</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">🔒</div>
+            <div class="feat-text">
+              <h4>100% Seguro e Confiável</h4>
+              <p>Seus dados protegidos com criptografia</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">⚡</div>
+            <div class="feat-text">
+              <h4>Automação Total</h4>
+              <p>Reduza processos manuais e erros</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-brand">
+        <div class="bn">ZENIT · Seazone</div>
+        <div class="bu">zenit.seazone.com</div>
+      </div>
+      <div class="bottom-bar"></div>
+    </div>
+  </div>
+</body>
+</html>

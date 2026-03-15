@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenit — Kit de Identidade Visual para Redes Sociais</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+    :root {
+      --blue-deep:   #001233;
+      --blue-mid:    #0066cc;
+      --blue-light:  #00d4ff;
+      --green:       #28a745;
+      --gold:        #f5c518;
+      --white:       #ffffff;
+      --gray-100:    #f4f6fb;
+      --gray-400:    #9aa5b4;
+      --gray-800:    #1c2336;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--gray-100);
+      color: var(--blue-deep);
+    }
+
+    /* ── HEADER ─────────────────────────────── */
+    .site-header {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+      color: var(--white);
+      padding: 3rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(0,212,255,.18) 0%, transparent 60%);
+    }
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+    .brand-logo .z-mark {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--blue-light), var(--blue-mid));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; font-weight: 900; color: var(--white);
+      box-shadow: 0 4px 20px rgba(0,212,255,.4);
+    }
+    .brand-logo .brand-name { font-size: 2.2rem; font-weight: 900; letter-spacing: -.02em; }
+    .site-header h1 { font-size: 1.05rem; font-weight: 400; opacity: .75; letter-spacing: .04em; text-transform: uppercase; }
+    .site-header p { margin-top: .5rem; opacity: .9; font-size: 1.1rem; }
+
+    /* ── COLOR PALETTE ───────────────────────── */
+    .section { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+    .section-title {
+      font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 2px;
+      background: linear-gradient(90deg, var(--blue-mid), transparent);
+    }
+
+    .palette { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .swatch {
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      width: 130px;
+    }
+    .swatch-color { height: 80px; }
+    .swatch-info { background: var(--white); padding: .6rem .75rem; }
+    .swatch-info .name { font-size: .8rem; font-weight: 600; }
+    .swatch-info .hex  { font-size: .75rem; color: var(--gray-400); }
+
+    /* ── TEMPLATES GRID ──────────────────────── */
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+    .template-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .template-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+    .template-card .preview {
+      width: 100%; background: var(--gray-800);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .template-card .preview iframe {
+      border: none; transform-origin: top left;
+      pointer-events: none;
+    }
+    .template-card .info { padding: 1rem 1.25rem 1.25rem; }
+    .template-card .info h3 { font-size: 1rem; font-weight: 700; margin-bottom: .25rem; }
+    .template-card .info .meta { font-size: .8rem; color: var(--gray-400); margin-bottom: .75rem; }
+    .template-card .info a {
+      display: inline-block;
+      padding: .45rem 1rem;
+      background: var(--blue-mid);
+      color: var(--white);
+      border-radius: 8px;
+      font-size: .85rem; font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .template-card .info a:hover { background: var(--blue-deep); }
+
+    /* ── PLATFORMS LEGEND ───────────────────── */
+    .platforms { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .platform-tag {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .4rem .9rem; border-radius: 999px;
+      font-size: .82rem; font-weight: 600;
+    }
+
+    footer {
+      text-align: center; padding: 2rem; font-size: .82rem;
+      color: var(--gray-400); margin-top: 4rem;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand-logo">
+    <div class="z-mark">Z</div>
+    <span class="brand-name">Zenit</span>
+  </div>
+  <h1>Kit de Identidade Visual — Redes Sociais</h1>
+  <p>Todos os formatos prontos para Facebook, Instagram, YouTube, LinkedIn e Twitter/X</p>
+</header>
+
+<!-- PALETA DE CORES -->
+<div class="section">
+  <div class="section-title">Paleta de Cores</div>
+  <div class="palette">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#001233"></div>
+      <div class="swatch-info"><div class="name">Azul Profundo</div><div class="hex">#001233</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0066cc"></div>
+      <div class="swatch-info"><div class="name">Azul Primário</div><div class="hex">#0066cc</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#00d4ff"></div>
+      <div class="swatch-info"><div class="name">Azul Céu</div><div class="hex">#00d4ff</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#28a745"></div>
+      <div class="swatch-info"><div class="name">Verde Crescimento</div><div class="hex">#28a745</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#f5c518"></div>
+      <div class="swatch-info"><div class="name">Ouro Premium</div><div class="hex">#f5c518</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#ffffff; border:1px solid #e2e8f0"></div>
+      <div class="swatch-info"><div class="name">Branco</div><div class="hex">#ffffff</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TEMPLATES -->
+<div class="section">
+  <div class="section-title">Templates por Plataforma</div>
+  <div class="templates-grid">
+
+    <!-- Facebook Cover -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:#1877f2;">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-.02em;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Capa do Facebook • 851 × 315 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Facebook — Capa do Perfil</h3>
+        <div class="meta">851 × 315 px</div>
+        <a href="facebook_cover.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- Facebook Post -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(135deg,#001233,#0066cc);">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:1.5rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Post Facebook • 1200 × 630 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Facebook — Post</h3>
+        <div class="meta">1200 × 630 px</div>
+        <a href="facebook_post.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- Instagram Post -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(135deg,#405de6,#5851db,#833ab4,#c13584,#e1306c,#fd1d1d,#f56040,#f77737,#fcaf45);">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:2rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Post Instagram • 1080 × 1080 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Instagram — Post Quadrado</h3>
+        <div class="meta">1080 × 1080 px</div>
+        <a href="instagram_post.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- Instagram Story -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(180deg,#001233,#0066cc,#00d4ff);">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:2rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Story • 1080 × 1920 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Instagram / Facebook — Story</h3>
+        <div class="meta">1080 × 1920 px</div>
+        <a href="instagram_story.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- Instagram Carrossel -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(135deg,#0066cc,#00d4ff);">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:1.8rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Carrossel • 1080 × 1080 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Instagram — Carrossel</h3>
+        <div class="meta">1080 × 1080 px (3 slides)</div>
+        <a href="instagram_carousel.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- YouTube Banner -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:#ff0000;">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:2rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Banner YouTube • 2560 × 1440 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>YouTube — Banner do Canal</h3>
+        <div class="meta">2560 × 1440 px</div>
+        <a href="youtube_banner.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- YouTube Thumbnail -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(135deg,#001233,#0066cc);">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:1.5rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Thumbnail • 1280 × 720 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>YouTube — Thumbnail</h3>
+        <div class="meta">1280 × 720 px</div>
+        <a href="youtube_thumbnail.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- LinkedIn Cover -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:#0077b5;">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:2rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Capa LinkedIn • 1584 × 396 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>LinkedIn — Capa do Perfil</h3>
+        <div class="meta">1584 × 396 px</div>
+        <a href="linkedin_cover.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- LinkedIn Post -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(135deg,#001233,#0077b5);">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:1.8rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Post LinkedIn • 1200 × 627 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>LinkedIn — Post</h3>
+        <div class="meta">1200 × 627 px</div>
+        <a href="linkedin_post.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- Twitter Header -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:#1da1f2;">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:2rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Header Twitter/X • 1500 × 500 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Twitter / X — Header</h3>
+        <div class="meta">1500 × 500 px</div>
+        <a href="twitter_header.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- WhatsApp Status -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(135deg,#25d366,#128c7e);">
+        <div style="color:white;text-align:center;padding:1rem;">
+          <div style="font-size:2rem;font-weight:900;">ZENIT</div>
+          <div style="font-size:.75rem;opacity:.8;margin-top:.25rem;">Status WhatsApp • 1080 × 1920 px</div>
+        </div>
+      </div>
+      <div class="info">
+        <h3>WhatsApp — Status</h3>
+        <div class="meta">1080 × 1920 px</div>
+        <a href="whatsapp_status.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+    <!-- Foto de Perfil Universal -->
+    <div class="template-card">
+      <div class="preview" style="height:160px; background:linear-gradient(135deg,#001233,#0066cc); display:flex;align-items:center;justify-content:center;">
+        <div style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#00d4ff,#0066cc);display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:900;color:white;">Z</div>
+      </div>
+      <div class="info">
+        <h3>Foto de Perfil — Universal</h3>
+        <div class="meta">800 × 800 px (serve todas as redes)</div>
+        <a href="profile_photo.html" target="_blank">Abrir Arte</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPOGRAFIA -->
+<div class="section">
+  <div class="section-title">Tipografia</div>
+  <div style="background:white;border-radius:16px;padding:2rem;box-shadow:0 2px 16px rgba(0,0,0,.07);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+      <div>
+        <div style="font-size:2.5rem;font-weight:900;color:#001233;letter-spacing:-.03em;">Aa</div>
+        <div style="font-size:.85rem;color:#9aa5b4;margin-top:.5rem;">Título Principal</div>
+        <div style="font-size:.8rem;font-weight:600;margin-top:.25rem;">Inter Black 900</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;font-weight:700;color:#0066cc;">Aa</div>
+        <div style="font-size:.85rem;color:#9aa5b4;margin-top:.5rem;">Subtítulo</div>
+        <div style="font-size:.8rem;font-weight:600;margin-top:.25rem;">Inter Bold 700</div>
+      </div>
+      <div>
+        <div style="font-size:1.2rem;font-weight:400;color:#333;">Aa</div>
+        <div style="font-size:.85rem;color:#9aa5b4;margin-top:.5rem;">Corpo de Texto</div>
+        <div style="font-size:.8rem;font-weight:600;margin-top:.25rem;">Inter Regular 400</div>
+      </div>
+      <div>
+        <div style="font-size:1rem;font-weight:300;color:#666;">Aa</div>
+        <div style="font-size:.85rem;color:#9aa5b4;margin-top:.5rem;">Legenda / Caption</div>
+        <div style="font-size:.8rem;font-weight:600;margin-top:.25rem;">Inter Light 300</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Zenit · Todos os direitos reservados · Seazone Financial Group
+</footer>
+
+</body>
+</html>

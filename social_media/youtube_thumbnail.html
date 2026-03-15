@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — YouTube Thumbnail 1280×720</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0d1117; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; gap: 1rem; }
+    .info-bar { color: #9aa5b4; font-size: .8rem; }
+
+    /* Scale down 1280×720 to ~800×450 for preview */
+    .canvas-scaler { transform: scale(0.625); transform-origin: top center; width: 1280px; margin-bottom: -157px; }
+
+    .canvas {
+      width: 1280px; height: 720px;
+      background: linear-gradient(140deg, #001233 0%, #002d6e 45%, #0052a3 100%);
+      position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .blob-tl {
+      position: absolute; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,.16), transparent 60%);
+      top: -250px; left: -200px;
+    }
+    .blob-br {
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(40,167,69,.1), transparent 60%);
+      bottom: -250px; right: -150px;
+    }
+    .grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    /* Left side: big graphic */
+    .left-graphic {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 480px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .z-giant {
+      font-size: 22rem; font-weight: 900; color: transparent;
+      background: linear-gradient(135deg, rgba(0,212,255,.4), rgba(0,102,204,.1));
+      -webkit-background-clip: text; background-clip: text;
+      line-height: 1; letter-spacing: -.1em;
+      user-select: none; pointer-events: none;
+    }
+    .logo-overlay {
+      position: absolute;
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #00d4ff, #0066cc);
+      border-radius: 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; font-weight: 900; color: #fff;
+      box-shadow: 0 16px 48px rgba(0,212,255,.5);
+    }
+
+    /* Right side: text */
+    .right-content {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      left: 440px;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 0 64px 0 40px;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .4rem 1rem; border-radius: 999px;
+      background: rgba(0,212,255,.15);
+      border: 1px solid rgba(0,212,255,.3);
+      font-size: .85rem; font-weight: 600; color: #00d4ff;
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 1.5rem; width: fit-content;
+    }
+
+    .headline {
+      font-size: 4rem; font-weight: 900; color: #fff;
+      line-height: 1.05; letter-spacing: -.04em;
+      margin-bottom: 1.25rem;
+    }
+    .headline .accent { color: #f5c518; }
+    .headline .accent2 { color: #00d4ff; }
+
+    .sub {
+      font-size: 1.15rem; color: rgba(255,255,255,.6);
+      line-height: 1.6; margin-bottom: 2rem; max-width: 540px;
+    }
+
+    .pill-row { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .pill {
+      padding: .5rem 1.1rem; border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: .85rem; font-weight: 600; color: rgba(255,255,255,.75);
+    }
+    .pill.green { background: rgba(40,167,69,.15); border-color: rgba(40,167,69,.3); color: #5dce7a; }
+
+    .bottom-strip {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #00d4ff, #0066cc 40%, #28a745 70%, #f5c518 100%);
+    }
+
+    .brand-badge {
+      position: absolute; top: 28px; right: 36px;
+      font-size: 1rem; font-weight: 900; color: rgba(255,255,255,.3);
+      letter-spacing: -.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">YouTube Thumbnail — 1280 × 720 px (exibido em 62%)</div>
+  <div class="canvas-scaler">
+    <div class="canvas">
+      <div class="blob-tl"></div>
+      <div class="blob-br"></div>
+      <div class="grid"></div>
+
+      <div class="left-graphic">
+        <div class="z-giant">Z</div>
+        <div class="logo-overlay">Z</div>
+      </div>
+
+      <div class="right-content">
+        <div class="badge">📊 Novo Vídeo</div>
+        <div class="headline">Como <span class="accent">dobrar</span><br>sua eficiência<br><span class="accent2">financeira</span></div>
+        <div class="sub">Descubra as estratégias que mais de 500 empresas usam com a Zenit para crescer mais rápido.</div>
+        <div class="pill-row">
+          <div class="pill">Gestão Financeira</div>
+          <div class="pill green">✓ Exclusivo</div>
+          <div class="pill">Dashboard</div>
+        </div>
+      </div>
+
+      <div class="brand-badge">ZENIT</div>
+      <div class="bottom-strip"></div>
+    </div>
+  </div>
+</body>
+</html>

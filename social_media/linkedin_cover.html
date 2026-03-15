@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — LinkedIn Cover 1584×396</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0d1117; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; gap: 1rem; }
+    .info-bar { color: #9aa5b4; font-size: .8rem; }
+
+    /* Scale 1584×396 to ~1100×275 for preview */
+    .canvas-scaler { transform: scale(0.694); transform-origin: top center; width: 1584px; margin-bottom: -82px; }
+
+    .canvas {
+      width: 1584px; height: 396px;
+      background: linear-gradient(135deg, #001233 0%, #002d70 50%, #004fab 80%, #0066cc 100%);
+      position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .blob {
+      position: absolute; width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,.15), transparent 60%);
+      top: -400px; right: -200px;
+    }
+    .blob-l {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(40,167,69,.1), transparent 60%);
+      bottom: -300px; left: 200px;
+    }
+    .grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Diagonal accent */
+    .diagonal {
+      position: absolute; top: 0; bottom: 0;
+      left: 72%; right: 0;
+      clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+      background: rgba(255,255,255,.025);
+      border-left: 1px solid rgba(255,255,255,.07);
+    }
+
+    .content {
+      position: absolute; inset: 0;
+      display: flex; align-items: center;
+      padding: 0 80px;
+      gap: 60px;
+    }
+
+    .logo-mark {
+      width: 110px; height: 110px;
+      background: linear-gradient(135deg, #00d4ff, #0066cc);
+      border-radius: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; font-weight: 900; color: #fff;
+      box-shadow: 0 12px 40px rgba(0,212,255,.45);
+      flex-shrink: 0;
+    }
+
+    .brand-block { flex: 1; }
+    .brand-name { font-size: 5rem; font-weight: 900; color: #fff; letter-spacing: -.05em; line-height: .95; }
+    .brand-name em { color: #00d4ff; font-style: normal; }
+    .tagline { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,.55); letter-spacing: .14em; text-transform: uppercase; margin-top: .75rem; }
+
+    .right-block {
+      display: flex; flex-direction: column; gap: 1.25rem;
+      border-left: 1px solid rgba(255,255,255,.1);
+      padding-left: 60px;
+    }
+
+    .value-prop {
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .vp-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .vp-text { font-size: 1rem; font-weight: 600; color: rgba(255,255,255,.8); }
+    .vp-sub  { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: .15rem; }
+
+    .stats-block {
+      border-left: 1px solid rgba(255,255,255,.1);
+      padding-left: 60px;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-v { font-size: 2rem; font-weight: 900; color: #f5c518; line-height: 1; }
+    .stat-l { font-size: .68rem; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .1em; }
+
+    .bottom-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #00d4ff, #0066cc 40%, #28a745 75%, #f5c518 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">LinkedIn Cover — 1584 × 396 px</div>
+  <div class="canvas-scaler">
+    <div class="canvas">
+      <div class="blob"></div>
+      <div class="blob-l"></div>
+      <div class="grid"></div>
+      <div class="diagonal"></div>
+      <div class="content">
+        <div class="logo-mark">Z</div>
+        <div class="brand-block">
+          <div class="brand-name">ZE<em>N</em>IT</div>
+          <div class="tagline">No topo das suas finanças · Seazone Financial</div>
+        </div>
+        <div class="right-block">
+          <div class="value-prop">
+            <div class="vp-icon">📊</div>
+            <div><div class="vp-text">Dashboards em Tempo Real</div><div class="vp-sub">KPIs e métricas sempre atualizadas</div></div>
+          </div>
+          <div class="value-prop">
+            <div class="vp-icon">🤝</div>
+            <div><div class="vp-text">+500 Empresas Confiam</div><div class="vp-sub">Solução de gestão financeira líder</div></div>
+          </div>
+          <div class="value-prop">
+            <div class="vp-icon">🔒</div>
+            <div><div class="vp-text">100% Seguro e Confiável</div><div class="vp-sub">Infraestrutura de nível enterprise</div></div>
+          </div>
+        </div>
+        <div class="stats-block">
+          <div class="stat-item"><div class="stat-v">+500</div><div class="stat-l">Clientes</div></div>
+          <div class="stat-item"><div class="stat-v">R$2B+</div><div class="stat-l">Processados</div></div>
+          <div class="stat-item"><div class="stat-v">99.9%</div><div class="stat-l">Uptime</div></div>
+        </div>
+      </div>
+      <div class="bottom-bar"></div>
+    </div>
+  </div>
+</body>
+</html>

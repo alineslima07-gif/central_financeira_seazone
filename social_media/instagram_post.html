@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — Instagram Post 1080×1080</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #111827; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; gap: 1rem; }
+    .info-bar { color: #9aa5b4; font-size: .8rem; }
+
+    .canvas {
+      width: 1080px; height: 1080px;
+      background: linear-gradient(160deg, #001233 0%, #003580 50%, #0066cc 100%);
+      position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    /* Decorative circles */
+    .circle-1 {
+      position: absolute;
+      width: 900px; height: 900px; border-radius: 50%;
+      border: 1px solid rgba(0,212,255,.12);
+      top: -300px; right: -300px;
+    }
+    .circle-2 {
+      position: absolute;
+      width: 600px; height: 600px; border-radius: 50%;
+      border: 1px solid rgba(0,212,255,.08);
+      top: -150px; right: -150px;
+    }
+    .blob {
+      position: absolute;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,.14), transparent 65%);
+      top: -200px; right: -200px;
+    }
+    .blob-green {
+      position: absolute;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(40,167,69,.1), transparent 65%);
+      bottom: -200px; left: -100px;
+    }
+    .grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 80px 72px;
+      text-align: center;
+    }
+
+    .logo-mark {
+      width: 120px; height: 120px;
+      background: linear-gradient(135deg, #00d4ff, #0066cc);
+      border-radius: 30px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; font-weight: 900; color: white;
+      box-shadow: 0 16px 48px rgba(0,212,255,.45);
+      letter-spacing: -.05em;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      font-size: .85rem; font-weight: 600; color: #00d4ff;
+      letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+
+    .headline {
+      font-size: 4.5rem; font-weight: 900; color: #fff;
+      line-height: 1; letter-spacing: -.04em; margin-bottom: 1.25rem;
+    }
+    .headline em { color: #00d4ff; font-style: normal; }
+
+    .divider-line {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, #00d4ff, #28a745);
+      border-radius: 2px; margin: 0 auto 1.5rem;
+    }
+
+    .body-text {
+      font-size: 1.15rem; color: rgba(255,255,255,.65);
+      line-height: 1.75; max-width: 580px; margin-bottom: 3rem;
+    }
+
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
+      width: 100%; max-width: 600px;
+      border-radius: 16px; overflow: hidden;
+      background: rgba(255,255,255,.06); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .stat-item {
+      padding: 1.5rem 1rem; text-align: center;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-v { font-size: 2rem; font-weight: 900; color: #00d4ff; line-height: 1; }
+    .stat-l { font-size: .72rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .1em; margin-top: .3rem; }
+
+    .brand-footer {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .brand-name { font-size: 1.2rem; font-weight: 900; color: #fff; letter-spacing: -.02em; }
+    .brand-url { font-size: .78rem; color: rgba(255,255,255,.4); }
+
+    .bottom-accent {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #00d4ff, #0066cc, #28a745);
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">Instagram Post — 1080 × 1080 px</div>
+  <div class="canvas">
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="blob"></div>
+    <div class="blob-green"></div>
+    <div class="grid"></div>
+    <div class="content">
+      <div class="logo-mark">Z</div>
+      <div class="eyebrow">Gestão Financeira Inteligente</div>
+      <div class="headline">Finanças no<br><em>topo</em> com<br>Zenit</div>
+      <div class="divider-line"></div>
+      <div class="body-text">Controle completo de contas a pagar e receber, dashboards em tempo real e análises que fazem sua empresa crescer.</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-v">+500</div><div class="stat-l">Clientes</div></div>
+        <div class="stat-item"><div class="stat-v">24/7</div><div class="stat-l">Suporte</div></div>
+        <div class="stat-item"><div class="stat-v">100%</div><div class="stat-l">Seguro</div></div>
+      </div>
+    </div>
+    <div class="brand-footer">
+      <div class="brand-name">ZENIT · Seazone</div>
+      <div class="brand-url">zenit.seazone.com</div>
+    </div>
+    <div class="bottom-accent"></div>
+  </div>
+</body>
+</html>

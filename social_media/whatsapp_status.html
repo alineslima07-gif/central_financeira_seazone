@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — WhatsApp Status 1080×1920</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0d1117; display: flex; flex-direction: column; align-items: center; padding: 2rem; gap: 1rem; font-family: 'Inter', sans-serif; }
+    .info-bar { color: #9aa5b4; font-size: .8rem; }
+
+    /* Half scale preview */
+    .canvas-wrapper { transform: scale(0.5); transform-origin: top center; width: 1080px; margin-bottom: -480px; }
+
+    .canvas {
+      width: 1080px; height: 1920px;
+      background: linear-gradient(160deg, #00120d 0%, #001a14 20%, #002d22 50%, #004d38 75%, #00703d 100%);
+      position: relative; overflow: hidden;
+    }
+
+    .blob-top { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(37,211,102,.2), transparent 60%); top: -300px; left: 50%; transform: translateX(-50%); }
+    .blob-bot { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(18,140,126,.15), transparent 60%); bottom: -250px; right: -200px; }
+    .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 70px 70px; }
+
+    /* Circles */
+    .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(37,211,102,.15); left: 50%; transform: translateX(-50%); }
+    .ring-1 { width: 1200px; height: 1200px; top: -350px; }
+    .ring-2 { width: 900px; height: 900px; top: -200px; }
+    .ring-3 { width: 600px; height: 600px; top: -50px; }
+
+    .top-bar { position: absolute; top: 80px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+    .logo-sm { width: 54px; height: 54px; background: linear-gradient(135deg, #25d366, #128c7e); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: #fff; }
+    .brand-sm { font-size: 1.6rem; font-weight: 900; color: #fff; letter-spacing: -.03em; }
+
+    .hero-content {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -52%);
+      text-align: center; width: 900px;
+    }
+
+    .big-z {
+      font-size: 20rem; font-weight: 900; color: transparent;
+      background: linear-gradient(135deg, rgba(37,211,102,.3), rgba(18,140,126,.1));
+      -webkit-background-clip: text; background-clip: text;
+      position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
+      line-height: 1; pointer-events: none; letter-spacing: -.08em;
+    }
+
+    .eyebrow { font-size: 1rem; font-weight: 600; color: #25d366; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.5rem; position: relative; }
+    .headline { font-size: 6rem; font-weight: 900; color: #fff; line-height: 1.05; letter-spacing: -.04em; margin-bottom: 1.5rem; position: relative; }
+    .headline em { color: #25d366; font-style: normal; }
+    .divider { width: 80px; height: 5px; background: linear-gradient(90deg, #25d366, #128c7e); border-radius: 3px; margin: 0 auto 2rem; position: relative; }
+    .body-text { font-size: 1.3rem; color: rgba(255,255,255,.7); line-height: 1.8; max-width: 700px; margin: 0 auto 3rem; position: relative; }
+    .cta-btn { display: inline-flex; align-items: center; gap: .75rem; padding: 1.25rem 3rem; background: linear-gradient(135deg, #25d366, #128c7e); border-radius: 16px; font-size: 1.25rem; font-weight: 700; color: #fff; box-shadow: 0 12px 40px rgba(37,211,102,.4); position: relative; }
+
+    .features-section { position: absolute; bottom: 220px; left: 0; right: 0; padding: 0 80px; }
+    .feature-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .feature-card { background: rgba(255,255,255,.06); backdrop-filter: blur(16px); border: 1px solid rgba(37,211,102,.15); border-radius: 20px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; }
+    .feat-icon { font-size: 2rem; }
+    .feat-text h4 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    .feat-text p { font-size: .9rem; color: rgba(255,255,255,.55); margin-top: .25rem; }
+
+    .bottom-brand { position: absolute; bottom: 60px; left: 0; right: 0; text-align: center; }
+    .bottom-brand .bn { font-size: 1.5rem; font-weight: 900; color: rgba(255,255,255,.35); }
+    .bottom-brand .bu { font-size: .9rem; color: rgba(255,255,255,.2); }
+    .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #25d366, #128c7e, #25d366); }
+  </style>
+</head>
+<body>
+  <div class="info-bar">WhatsApp Status — 1080 × 1920 px (exibido em 50%)</div>
+  <div class="canvas-wrapper">
+    <div class="canvas">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+      <div class="blob-top"></div>
+      <div class="blob-bot"></div>
+      <div class="grid"></div>
+
+      <div class="top-bar">
+        <div class="logo-sm">Z</div>
+        <div class="brand-sm">ZENIT</div>
+      </div>
+
+      <div class="hero-content">
+        <div class="big-z">Z</div>
+        <div class="eyebrow">Gestão Financeira Inteligente</div>
+        <div class="headline">Suas<br>finanças<br>no <em>topo</em></div>
+        <div class="divider"></div>
+        <div class="body-text">Controle total de contas a pagar e receber com dashboards em tempo real. Simples, rápido e seguro.</div>
+        <div class="cta-btn">Saiba Mais →</div>
+      </div>
+
+      <div class="features-section">
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feat-icon">📊</div>
+            <div class="feat-text"><h4>Dashboards em Tempo Real</h4><p>Visualize KPIs e métricas instantaneamente</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">💰</div>
+            <div class="feat-text"><h4>Controle Financeiro Total</h4><p>AP e AR centralizados em uma plataforma</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">🔒</div>
+            <div class="feat-text"><h4>100% Seguro</h4><p>Seus dados protegidos com criptografia</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-brand">
+        <div class="bn">ZENIT · Seazone</div>
+        <div class="bu">zenit.seazone.com</div>
+      </div>
+      <div class="bottom-bar"></div>
+    </div>
+  </div>
+</body>
+</html>

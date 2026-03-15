@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — LinkedIn Post 1200×627</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0d1117; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; gap: 1rem; }
+    .info-bar { color: #9aa5b4; font-size: .8rem; }
+
+    /* Scale 1200×627 to ~900×470 */
+    .canvas-scaler { transform: scale(0.75); transform-origin: top center; width: 1200px; margin-bottom: -104px; }
+
+    .canvas {
+      width: 1200px; height: 627px;
+      background: linear-gradient(135deg, #001233 0%, #002966 50%, #0066cc 100%);
+      position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .blob { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,255,.15), transparent 60%); top: -250px; right: -150px; }
+    .blob-g { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(40,167,69,.1), transparent 60%); bottom: -200px; left: -100px; }
+    .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 50px 50px; }
+
+    /* Right panel */
+    .right-panel {
+      position: absolute; top: 0; bottom: 0; right: 0;
+      width: 380px;
+      background: rgba(255,255,255,.04);
+      border-left: 1px solid rgba(255,255,255,.08);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2.5rem;
+      gap: 1.5rem;
+    }
+
+    .logo-mark {
+      width: 90px; height: 90px;
+      background: linear-gradient(135deg, #00d4ff, #0066cc);
+      border-radius: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; font-weight: 900; color: #fff;
+      box-shadow: 0 12px 36px rgba(0,212,255,.4);
+    }
+    .brand-name { font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: -.03em; }
+    .brand-sub { font-size: .78rem; color: rgba(255,255,255,.4); letter-spacing: .12em; text-transform: uppercase; }
+
+    .divider-h { width: 100%; height: 1px; background: rgba(255,255,255,.08); }
+
+    .stats-col { width: 100%; display: flex; flex-direction: column; gap: 1rem; }
+    .stat-row { display: flex; align-items: center; justify-content: space-between; }
+    .stat-label { font-size: .8rem; color: rgba(255,255,255,.5); }
+    .stat-val { font-size: 1.2rem; font-weight: 900; color: #00d4ff; }
+
+    /* Left content */
+    .left-content {
+      position: absolute; top: 0; bottom: 0; left: 0; right: 380px;
+      padding: 3.5rem 3rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+
+    .eyebrow { font-size: .8rem; font-weight: 600; color: #00d4ff; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 1rem; }
+    .headline { font-size: 3rem; font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 1.25rem; }
+    .headline em { color: #00d4ff; font-style: normal; }
+
+    .body-text { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 2rem; }
+
+    .cta-row { display: flex; gap: 1rem; align-items: center; }
+    .btn-cta {
+      padding: .75rem 2rem;
+      background: linear-gradient(135deg, #28a745, #1d8035);
+      border-radius: 10px;
+      font-size: .95rem; font-weight: 700; color: #fff;
+      box-shadow: 0 6px 24px rgba(40,167,69,.35);
+    }
+    .btn-ghost {
+      padding: .75rem 1.5rem;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 10px;
+      font-size: .95rem; font-weight: 600; color: rgba(255,255,255,.7);
+    }
+
+    .tag-row { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .tag {
+      padding: .3rem .75rem; border-radius: 999px;
+      background: rgba(0,212,255,.1);
+      border: 1px solid rgba(0,212,255,.2);
+      font-size: .72rem; font-weight: 600; color: #00d4ff;
+    }
+
+    .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #00d4ff, #0066cc 40%, #28a745 75%, #f5c518 100%); }
+  </style>
+</head>
+<body>
+  <div class="info-bar">LinkedIn Post — 1200 × 627 px</div>
+  <div class="canvas-scaler">
+    <div class="canvas">
+      <div class="blob"></div>
+      <div class="blob-g"></div>
+      <div class="grid"></div>
+
+      <div class="left-content">
+        <div>
+          <div class="eyebrow">Gestão Financeira · Zenit</div>
+          <div class="headline">Transforme a gestão<br>financeira da sua <em>empresa</em></div>
+          <div class="body-text">Com a plataforma Zenit, você centraliza contas a pagar e receber, monitora KPIs em tempo real e toma decisões baseadas em dados — tudo em um único lugar.</div>
+          <div class="cta-row">
+            <div class="btn-cta">Começar Agora →</div>
+            <div class="btn-ghost">Ver Demo</div>
+          </div>
+        </div>
+        <div class="tag-row">
+          <div class="tag">#GestãoFinanceira</div>
+          <div class="tag">#Zenit</div>
+          <div class="tag">#FinTech</div>
+          <div class="tag">#Seazone</div>
+          <div class="tag">#Dashboard</div>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="logo-mark">Z</div>
+        <div class="brand-name">ZENIT</div>
+        <div class="brand-sub">Seazone Financial</div>
+        <div class="divider-h"></div>
+        <div class="stats-col">
+          <div class="stat-row"><div class="stat-label">Clientes Ativos</div><div class="stat-val">+500</div></div>
+          <div class="stat-row"><div class="stat-label">Volume Processado</div><div class="stat-val">R$2B+</div></div>
+          <div class="stat-row"><div class="stat-label">Disponibilidade</div><div class="stat-val">99.9%</div></div>
+          <div class="stat-row"><div class="stat-label">NPS</div><div class="stat-val">92</div></div>
+        </div>
+      </div>
+
+      <div class="bottom-bar"></div>
+    </div>
+  </div>
+</body>
+</html>

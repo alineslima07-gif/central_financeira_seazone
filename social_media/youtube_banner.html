@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Zenit — YouTube Banner 2560×1440</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0d1117; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Inter', sans-serif; gap: 1rem; }
+    .info-bar { color: #9aa5b4; font-size: .8rem; }
+    .safe-info { color: #6b7280; font-size: .72rem; font-family: 'Inter', sans-serif; }
+
+    /* Scale 2560×1440 to 1200×675 for preview */
+    .canvas-scaler { transform: scale(0.469); transform-origin: top center; width: 2560px; margin-bottom: -383px; }
+
+    .canvas {
+      width: 2560px; height: 1440px;
+      background: linear-gradient(135deg, #000d20 0%, #001a4d 35%, #002980 65%, #0052a3 85%, #0066cc 100%);
+      position: relative; overflow: hidden;
+    }
+
+    /* Background decorations */
+    .blob-main {
+      position: absolute;
+      width: 2000px; height: 2000px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,.12), transparent 55%);
+      top: -800px; right: -600px;
+    }
+    .blob-green {
+      position: absolute;
+      width: 1200px; height: 1200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(40,167,69,.08), transparent 55%);
+      bottom: -600px; left: -200px;
+    }
+    .grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 120px 120px;
+    }
+
+    /* Diagonal stripe accent */
+    .stripe {
+      position: absolute; top: 0; bottom: 0;
+      left: 55%; width: 6px;
+      background: linear-gradient(180deg, rgba(0,212,255,.5), rgba(0,212,255,0));
+      transform: skewX(-12deg);
+    }
+    .stripe-2 {
+      position: absolute; top: 0; bottom: 0;
+      left: 56.5%; width: 2px;
+      background: linear-gradient(180deg, rgba(245,197,24,.35), rgba(245,197,24,0));
+      transform: skewX(-12deg);
+    }
+
+    /* Safe area guides (YouTube: safe area is 1546×423 centered) */
+    .safe-zone {
+      position: absolute;
+      left: 507px; right: 507px; top: 509px; bottom: 509px;
+      border: 1px dashed rgba(255,255,255,.12);
+    }
+
+    /* Main content */
+    .content {
+      position: absolute; inset: 0;
+      display: flex; align-items: center;
+      padding: 0 260px;
+      gap: 100px;
+    }
+
+    .left { flex: 1; }
+
+    .logo-mark {
+      width: 160px; height: 160px;
+      background: linear-gradient(135deg, #00d4ff, #0066cc);
+      border-radius: 40px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem; font-weight: 900; color: #fff;
+      box-shadow: 0 24px 80px rgba(0,212,255,.45);
+      letter-spacing: -.05em;
+      margin-bottom: 3rem;
+    }
+
+    .brand-name {
+      font-size: 9rem; font-weight: 900; color: #fff;
+      letter-spacing: -.06em; line-height: .95;
+    }
+    .brand-name em { color: #00d4ff; font-style: normal; }
+
+    .tagline {
+      font-size: 1.8rem; font-weight: 300; color: rgba(255,255,255,.6);
+      letter-spacing: .12em; text-transform: uppercase; margin-top: 1.5rem;
+    }
+
+    .right {
+      width: 700px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+
+    .right-title {
+      font-size: 2rem; font-weight: 700; color: rgba(255,255,255,.5);
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+
+    .feature-pills { display: flex; flex-direction: column; gap: 1.5rem; }
+    .pill {
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+    }
+    .pill-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .pill-text h4 { font-size: 1.3rem; font-weight: 700; color: #fff; }
+    .pill-text p { font-size: 1rem; color: rgba(255,255,255,.5); margin-top: .3rem; }
+
+    .stats-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2rem 260px;
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(16px);
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .stat { text-align: center; }
+    .stat .v { font-size: 2.8rem; font-weight: 900; color: #00d4ff; line-height: 1; }
+    .stat .l { font-size: .9rem; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .1em; margin-top: .3rem; }
+    .stat-divider { width: 1px; height: 60px; background: rgba(255,255,255,.1); }
+
+    .bottom-line {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, #00d4ff 0%, #0066cc 35%, #28a745 70%, #f5c518 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">YouTube Banner — 2560 × 1440 px (exibido em ~47%)</div>
+  <div class="safe-info">Área segura (visível em todas as telas): 1546 × 423 px centrados</div>
+  <div class="canvas-scaler">
+    <div class="canvas">
+      <div class="blob-main"></div>
+      <div class="blob-green"></div>
+      <div class="grid"></div>
+      <div class="stripe"></div>
+      <div class="stripe-2"></div>
+      <div class="safe-zone"></div>
+
+      <div class="content">
+        <div class="left">
+          <div class="logo-mark">Z</div>
+          <div class="brand-name">ZE<em>N</em>IT</div>
+          <div class="tagline">No topo das suas finanças</div>
+        </div>
+        <div class="right">
+          <div class="right-title">O que você vai encontrar</div>
+          <div class="feature-pills">
+            <div class="pill">
+              <div class="pill-icon">📊</div>
+              <div class="pill-text">
+                <h4>Dashboards Financeiros</h4>
+                <p>Análises e relatórios em tempo real</p>
+              </div>
+            </div>
+            <div class="pill">
+              <div class="pill-icon">💡</div>
+              <div class="pill-text">
+                <h4>Tutoriais e Dicas</h4>
+                <p>Aprenda a maximizar sua gestão financeira</p>
+              </div>
+            </div>
+            <div class="pill">
+              <div class="pill-icon">🚀</div>
+              <div class="pill-text">
+                <h4>Cases de Sucesso</h4>
+                <p>Histórias reais de empresas que cresceram</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat"><div class="v">+500</div><div class="l">Clientes Ativos</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><div class="v">R$ 2B+</div><div class="l">Processados</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><div class="v">24/7</div><div class="l">Suporte</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><div class="v">99.9%</div><div class="l">Uptime</div></div>
+        <div class="stat-divider"></div>
+        <div style="font-size:1.1rem;color:rgba(255,255,255,.35);letter-spacing:.05em;">zenit.seazone.com</div>
+      </div>
+      <div class="bottom-line"></div>
+    </div>
+  </div>
+</body>
+</html>
